@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@theme {
+  --color-bg-light: #FDFCF8;
+  --color-bg-dark: #0F172A;
+  --color-text-light: #1A1A1A;
+  --color-text-dark: #F8FAFC;
+}
