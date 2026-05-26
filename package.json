@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node ./node_modules/vite/bin/vite.js --port=3000 --host=0.0.0.0",
-    "build": "node ./node_modules/vite/bin/vite.js build",
+    "dev": "node ./node_modules/vite/bin/vite.js --port=3000 --host=0.0.0.0 --open /app.html",
+    "build": "node ./node_modules/vite/bin/vite.js build && node ./scripts/postbuild.mjs && node ./scripts/sync-pages-assets.mjs",
     "preview": "node ./node_modules/vite/bin/vite.js preview",
     "predeploy": "npm run build",
     "deploy": "node ./node_modules/gh-pages/bin/gh-pages.js -d dist",

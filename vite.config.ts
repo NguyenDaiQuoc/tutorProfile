@@ -8,6 +8,11 @@ export default defineConfig(({mode}) => {
   return {
     plugins: [react(), tailwindcss()],
     base: mode === 'production' ? '/tutorProfile/' : '/',
+    build: {
+      rollupOptions: {
+        input: path.resolve(__dirname, 'app.html'),
+      },
+    },
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
