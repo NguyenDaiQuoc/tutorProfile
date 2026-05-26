@@ -176,10 +176,10 @@ const translations = {
       email: "luutrithon1996@gmail.com",
       github: "github.com/NguyenDaiQuoc",
       linkedin: "linkedin.com/in/NguyenDaiQuoc",
-      phone: "(+84) 932 739 xxx",
+      phone: "0931.454.176",
       educationTitle: "HỌC VẤN",
       school: "Đại học Sài Gòn",
-      degree: "Cử nhân Kỹ thuật Phần mềm",
+      degree: "Kỹ thuật phần mềm",
       eduDetails: "Nền tảng vững chắc trong phát triển phần mềm, cấu trúc dữ liệu, giải thuật và phân tích thiết kế dự án phức tạp.",
       experienceTitle: "KINH NGHIỆM LÀM VIỆC",
       expTutor: "Gia sư toán học tự do (K-8 Mathematics)",
@@ -375,10 +375,10 @@ const translations = {
       email: "luutrithon1996@gmail.com",
       github: "github.com/NguyenDaiQuoc",
       linkedin: "linkedin.com/in/NguyenDaiQuoc",
-      phone: "(+84) 932 739 xxx",
+      phone: "0931.454.176",
       educationTitle: "EDUCATION",
       school: "Saigon University",
-      degree: "Bachelor of Science in Software Engineering",
+      degree: "Software Engineering",
       eduDetails: "Solid foundation in core software engineering, algorithms, database management systems, and system design paradigms.",
       experienceTitle: "WORK EXPERIENCE",
       expTutor: "Freelance Math Tutor (K-8 Mathematics)",
@@ -529,7 +529,7 @@ const latexViSource = `%-------------------------
 %----------THÔNG TIN CÁ NHÂN----------
 \\begin{center}
     \\textbf{\\Huge \\scshape Nguyễn Đại Quốc} \\\\ \\vspace{8pt}
-    \\small (+84) 932 739 xxx $|$ \\href{mailto:luutrithon1996@gmail.com}{luutrithon1996@gmail.com} $|$ 
+    \\small 0931.454.176 $|$ \\href{mailto:luutrithon1996@gmail.com}{luutrithon1996@gmail.com} $|$ 
     \\href{https://github.com/NguyenDaiQuoc}{github.com/NguyenDaiQuoc} $|$ \\href{https://linkedin.com/in/NguyenDaiQuoc}{linkedin.com/in/NguyenDaiQuoc} \\\\
     \\small Thành phố Hồ Chí Minh, Việt Nam
 \\end{center}
@@ -540,7 +540,7 @@ const latexViSource = `%-------------------------
   \\resumeSubHeadingListStart
     \\resumeSubheading
       {Đại học Sài Gòn}{Hồ Chí Minh, Việt Nam}
-      {Cử nhân Kỹ thuật Phần mềm (Khóa 2022 -- 2027)}{2022 -- 2027}
+      {Kỹ thuật phần mềm (Khóa 2022 -- 2027)}{2022 -- 2027}
       \\resumeItemListStart
         \\resumeItem{Nền tảng vững vàng trong phát triển và kiểm định chất lượng phần mềm, phát triển giải pháp hệ thống, thuật toán và cấu trúc thông tin nâng cao.}
       \\resumeItemListEnd
@@ -709,7 +709,7 @@ const latexEnSource = `%-------------------------
 %----------HEADING----------
 \\begin{center}
     \\textbf{\\Huge \\scshape Nguyen Dai Quoc} \\\\ \\vspace{8pt}
-    \\small (+84) 932 739 xxx $|$ \\href{mailto:luutrithon1996@gmail.com}{luutrithon1996@gmail.com} $|$ 
+    \\small 0931.454.176 $|$ \\href{mailto:luutrithon1996@gmail.com}{luutrithon1996@gmail.com} $|$ 
     \\href{https://github.com/NguyenDaiQuoc}{github.com/NguyenDaiQuoc} $|$ \\href{https://linkedin.com/in/NguyenDaiQuoc}{linkedin.com/in/NguyenDaiQuoc} \\\\
     \\small Ho Chi Minh City, Vietnam
 \\end{center}
@@ -720,7 +720,7 @@ const latexEnSource = `%-------------------------
   \\resumeSubHeadingListStart
     \\resumeSubheading
       {Saigon University}{Saigon, Vietnam}
-      {Bachelor of Science in Software Engineering}{2022 -- 2027}
+      {Software Engineering}{2022 -- 2027}
       \\resumeItemListStart
         \\resumeItem{Solid foundation in core software engineering, data structures, algorithms, and database systems.}
       \\resumeItemListEnd
@@ -900,30 +900,90 @@ export default function App() {
 
     try {
       setIsDownloadingCV(true);
-      const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
-        import("html2canvas"),
-        import("jspdf")
-      ]);
+      const printWindow = window.open("", "_blank", "width=960,height=1280");
 
-      const canvas = await html2canvas(cvExportRef.current, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        logging: false,
-        windowWidth: cvExportRef.current.scrollWidth,
-        windowHeight: cvExportRef.current.scrollHeight
+      if (!printWindow) {
+        window.alert(
+          lang === "vi"
+            ? "Trình duyệt đang chặn cửa sổ in. Vui lòng cho phép pop-up rồi thử lại."
+            : "Your browser blocked the print window. Please allow pop-ups and try again."
+        );
+        return;
+      }
+
+      const stylesheetMarkup = Array.from(
+        document.querySelectorAll('link[rel="stylesheet"], style')
+      )
+        .map((node) => node.outerHTML)
+        .join("\n");
+
+      const printableNode = cvExportRef.current.cloneNode(true) as HTMLDivElement;
+      printableNode.removeAttribute("aria-hidden");
+      printableNode.className = "cv-print-shell";
+      printableNode.style.position = "static";
+      printableNode.style.left = "auto";
+      printableNode.style.top = "auto";
+      printableNode.style.zIndex = "auto";
+      printableNode.style.width = "210mm";
+      printableNode.style.minHeight = "297mm";
+      printableNode.style.margin = "0 auto";
+      printableNode.style.padding = "1.5cm";
+      printableNode.style.background = "#ffffff";
+      printableNode.style.color = "#000000";
+      printableNode.style.opacity = "1";
+      printableNode.style.pointerEvents = "auto";
+
+      printWindow.document.open();
+      printWindow.document.write(`<!doctype html>
+<html lang="${lang}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nguyen Dai Quoc CV</title>
+    ${stylesheetMarkup}
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #f3f4f6;
+      }
+
+      body {
+        padding: 24px;
+      }
+
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      @media print {
+        html, body {
+          background: #ffffff;
+        }
+
+        body {
+          padding: 0;
+        }
+
+        .cv-print-shell {
+          margin: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    ${printableNode.outerHTML}
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          window.print();
+        }, 250);
       });
-
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "mm",
-        format: "a4",
-        compress: true
-      });
-
-      const imageData = canvas.toDataURL("image/png");
-      pdf.addImage(imageData, "PNG", 0, 0, 210, 297, undefined, "FAST");
-      pdf.save(`nguyen-dai-quoc-cv-${lang}.pdf`);
+    <\/script>
+  </body>
+</html>`);
+      printWindow.document.close();
     } catch (error) {
       console.error("Failed to generate CV PDF", error);
       window.alert(
