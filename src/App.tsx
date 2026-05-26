@@ -51,12 +51,12 @@ const translations = {
     },
     about: {
       title: "Về tôi",
-      desc1: "Tôi hiện là sinh viên năm 3 ngành Kỹ thuật Phần mềm tại Đại học Sài Gòn. Với nền tảng kiến thức vững chắc về Toán học và Lập trình, tôi đã có hơn 2 năm kinh nghiệm dạy kèm cho học sinh từ mầm non đến lớp 8.",
+      desc1: "Tôi hiện là sinh viên năm 4 ngành Kỹ thuật Phần mềm tại Đại học Sài Gòn. Với nền tảng kiến thức vững chắc về Toán học và Lập trình, tôi đã có hơn 3 năm kinh nghiệm dạy kèm cho học sinh từ mầm non đến lớp 8.",
       desc2: "Phương pháp giảng dạy của tôi tập trung vào việc khơi gợi sự tò mò, rèn luyện tư duy phản biện và giải quyết vấn đề thay vì chỉ học thuộc lòng công thức.",
       university: "Đại học Sài Gòn",
       major: "Kỹ sư Phần mềm (2022 — 2027)",
       stats: [
-        { val: "2+", label: "Năm kinh nghiệm" },
+        { val: "3+", label: "Năm kinh nghiệm" },
         { val: "20+", label: "Học sinh đã dạy" },
         { val: "100%", label: "Tận tâm" },
         { val: "B", label: "Kết quả học tập" }
@@ -165,7 +165,7 @@ const translations = {
       successDesc: "Tin nhắn của bạn đã được gửi thành công. Tôi sẽ liên hệ lại với bạn qua email sớm nhất có thể.",
       close: "Đóng"
     },
-    footer: "© 2026 Nguyễn Đại Quốc. Thiết kế dựa trên Portfolio Template.",
+    footer: "© 2026 Nguyễn Đại Quốc.",
     cv: {
       title: "NGUYỄN ĐẠI QUỐC - SƠ YẾU LÝ LỊCH (CV)",
       subtitle: "Gia sư Toán & Kỹ sư Phần mềm tương lai",
@@ -250,12 +250,12 @@ const translations = {
     },
     about: {
       title: "About Me",
-      desc1: "I am currently a 3rd-year Software Engineering student at Saigon University. With a solid foundation in Mathematics and Programming, I have over 2 years of experience tutoring students from preschool to grade 8.",
+      desc1: "I am currently a 4th-year Software Engineering student at Saigon University. With a solid foundation in Mathematics and Programming, I have over 3 years of experience tutoring students from preschool to grade 8.",
       desc2: "My teaching method focuses on sparking curiosity, training critical thinking, and problem-solving rather than just memorizing formulas.",
       university: "Saigon University",
       major: "Software Engineering (2022 — 2027)",
       stats: [
-        { val: "2+", label: "Years Experience" },
+        { val: "3+", label: "Years Experience" },
         { val: "20+", label: "Students Taught" },
         { val: "100%", label: "Dedicated" },
         { val: "B", label: "Academic Results" }
@@ -364,7 +364,7 @@ const translations = {
       successDesc: "Your message has been sent successfully. I will contact you via email as soon as possible.",
       close: "Close"
     },
-    footer: "© 2026 Nguyen Dai Quoc. Designed based on Portfolio Template.",
+    footer: "© 2026 Nguyen Dai Quoc.",
     cv: {
       title: "NGUYEN DAI QUOC - CURRICULUM VITAE",
       subtitle: "Math Tutor & Aspiring Software Engineer",
